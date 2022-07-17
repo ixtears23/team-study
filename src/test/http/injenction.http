@@ -1,0 +1,14 @@
+### bean 조회 AChildBean
+GET http://localhost:8080/injection?bean=AChildBean
+
+### bean 조회 BChildBean
+GET http://localhost:8080/injection?bean=BChildBean
+
+### bean 조회 parentBean
+GET http://localhost:8080/injection?bean=parentBean
+
+### setter 기반 의존성 주입 - AChildBean, BChildBean
+POST http://localhost:8080/injection?bean=BChildBean
+
+### 생성자 기반 의존성 주입
+PATCH http://localhost:8080/injection
