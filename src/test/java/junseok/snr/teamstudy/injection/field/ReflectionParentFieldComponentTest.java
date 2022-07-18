@@ -3,16 +3,22 @@ package junseok.snr.teamstudy.injection.field;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.lang.reflect.Field;
 
-class ParentFiledComponentTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class ReflectionParentFieldComponentTest {
 
     private ParentFiledComponent parentFiledComponent;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IllegalAccessException, NoSuchFieldException {
         parentFiledComponent = new ParentFiledComponent();
+        final Field field = parentFiledComponent.getClass().getDeclaredField("childFieldComponent");
+        field.setAccessible(true);
+        field.set(parentFiledComponent, new ChildFieldComponent());
     }
+
 
     @Test
     void calculateTest() {
